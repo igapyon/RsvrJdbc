@@ -1,0 +1,9 @@
+.DS_Store
+/target/
+/bin/
+.classpath
+.project
+.settings
+FUNCTIONS.docx
+README.docx
+pandoc-template-20220901a.docx
