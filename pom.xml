@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jp.igapyon.rsvr.jdbc</groupId>
 	<artifactId>RsvrJdbc</artifactId>
-	<version>1.0.20220917k-SNAPSHOT</version>
+	<version>1.0.20220917k</version>
 	<name>RsvrJdbc</name>
 	<description>RsvrJdbc is a lightweight library designed to eliminate minor annoyances in JDBC programming. 
 	RsvrJdbc is designed so that experienced JDBC programmers can start using RsvrJdbc immediately by knowing the small changes in RsvrJdbc, 
@@ -23,7 +23,7 @@
 		<url>https://github.com/igapyon/RsvrJdbc</url>
 		<connection>scm:git:https://github.com/igapyon/RsvrJdbc.git</connection>
 		<developerConnection>scm:git:https://github.com/igapyon/RsvrJdbc.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>RsvrJdbc-1.0.20220917k</tag>
 	</scm>
 
 	<developers>
