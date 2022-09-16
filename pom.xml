@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>consulting.reservoir.jdbc</groupId>
 	<artifactId>RsvrJdbc</artifactId>
-	<version>1.0.20220917g-SNAPSHOT</version>
+	<version>1.0.20220916i-SNAPSHOT</version>
 	<name>RsvrJdbc</name>
 	<description>RsvrJdbc is a lightweight library designed to eliminate minor annoyances in JDBC programming. 
 	RsvrJdbc is designed so that experienced JDBC programmers can start using RsvrJdbc immediately by knowing the small changes in RsvrJdbc, 
@@ -47,11 +47,11 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
 
