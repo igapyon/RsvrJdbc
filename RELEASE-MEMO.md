@@ -12,3 +12,9 @@ mvn clean release:prepare -DpushChanges=false
 ```
 mvn clean release:perform
 ```
+
+
+
+https://central.sonatype.org/publish/publish-guide/#accessing-repositories
+
+
