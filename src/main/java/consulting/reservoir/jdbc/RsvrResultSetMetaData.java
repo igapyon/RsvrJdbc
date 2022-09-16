@@ -21,13 +21,13 @@ import java.sql.SQLException;
 /**
  * RsvrJdbc が提供する ResultSetMetaData です。
  * 
- * <h1>About RsvrJdbc</h1>
+ * <h2>About RsvrJdbc</h2>
  *
  * `RsvrJdbc` は、JDBCプログラミングにおける `ちいさないらいら` を解消することを目的に作成した軽量ライブラリです。
  * JDBCプログラミング体験そのままが活用できることを原則に `RsvrJdbc` における小さな変更点を知るだけで
  * JDBCプログラミング経験者はすぐに利用開始でき、そして `ちいさないらいら` を解消できることを目指して `RsvrJdbc` は作られています。
  * 
- * <h2>Usage: MetaData取得</h2>
+ * <h3>Usage: MetaData取得</h3>
  * 
  * `RsvrResultSetMetaData` は、columnIndex 指定の省略を提供します。columnIndex
  * は自動的に増えることはありません。columnIndex は RsvrJdbc 独自の nextColumn() メソッドの呼び出し、または

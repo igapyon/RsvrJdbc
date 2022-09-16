@@ -36,13 +36,13 @@ import java.util.Calendar;
 /**
  * RsvrJdbc が提供する PreparedStatement です。
  * 
- * <h1>About RsvrJdbc</h1>
+ * <h2>About RsvrJdbc</h2>
  *
  * `RsvrJdbc` は、JDBCプログラミングにおける `ちいさないらいら` を解消することを目的に作成した軽量ライブラリです。
  * JDBCプログラミング体験そのままが活用できることを原則に `RsvrJdbc` における小さな変更点を知るだけで
  * JDBCプログラミング経験者はすぐに利用開始でき、そして `ちいさないらいら` を解消できることを目指して `RsvrJdbc` は作られています。
  * 
- * <h2>Usage: 更新 (追加と削除も同様)</h2>
+ * <h3>Usage: 更新 (追加と削除も同様)</h3>
  * 
  * 引き続き基本的な使い方を見てみましょう。以下がシンプルな更新の例です。 conn.prepareStatement() の結果を
  * RsvrJdbc.wrap() で受けることにより、PreparedStatement に相当する `RsvrPreparedStatement`
@@ -85,7 +85,7 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * でも待ってください。parameterIndex の指定が省略されるとして、この値はいつリセットされるのでしょうか。次に
  * RsvrPreparedStatement 内部の parameterIndex のリセットタイミングを見てみましょう。
  * 
- * <h2>RsvrPreparedStatement 内部の parameterIndex のリセットタイミング</h2>
+ * <h3>RsvrPreparedStatement 内部の parameterIndex のリセットタイミング</h3>
  * 
  * 以下のメソッド呼び出しのタイミングで RsvrPreparedStatement 内部の parameterIndex のリセットはおこなわれます。
  * 

@@ -23,13 +23,13 @@ import java.sql.ResultSetMetaData;
  * PreparedStatement および ResultSet を引数に、RsvrJdbc クラスを導入できる、RsvrJdbc
  * で最初に利用する構成に切り替えための、最初に使用するクラスです。
  * 
- * <h1>About RsvrJdbc</h1>
+ * <h2>About RsvrJdbc</h2>
  *
  * `RsvrJdbc` は、JDBCプログラミングにおける `ちいさないらいら` を解消することを目的に作成した軽量ライブラリです。
  * JDBCプログラミング体験そのままが活用できることを原則に `RsvrJdbc` における小さな変更点を知るだけで
  * JDBCプログラミング経験者はすぐに利用開始でき、そして `ちいさないらいら` を解消できることを目指して `RsvrJdbc` は作られています。
  * 
- * <h2>Usage: 検索</h2>
+ * <h3>Usage: 検索</h3>
  * 
  * まずは基本的な使い方から見てみましょう。 まずは検索の方法から見ていきます。以下がシンプルな検索の例です。 このソースコード断片では
  * `conn.prepareStatement()` の結果を `RsvrJdbc#wrap`
@@ -62,7 +62,7 @@ try (RsvrPreparedStatement stmt = RsvrJdbc.wrap(conn.prepareStatement(
  * でも待ってください。columnIndex の指定が省略されるとして、この値はいつリセットされるのでしょうか。大丈夫です。次の説明で
  * RsvrResultSet 内部の columnIndex のリセットタイミングを知ることができます。
  * 
- * <h2>RsvrResultSet 内部の columnIndex のリセットタイミング</h2>
+ * <h3>RsvrResultSet 内部の columnIndex のリセットタイミング</h3>
  * 
  * `RsvrJdbc` では、以下のメソッド呼び出しのタイミングで RsvrResultSet 内部の columnIndex のリセットを実施します。
  * 
@@ -84,7 +84,7 @@ try (RsvrPreparedStatement stmt = RsvrJdbc.wrap(conn.prepareStatement(
  * また、RsvrResultSet#resetColumnIndex メソッドを明示的に呼び出すことによっても columnIndex
  * のリセットを行うことが可能です。
  * 
- * <h2>Usage: 更新 (追加と削除も同様)</h2>
+ * <h3>Usage: 更新 (追加と削除も同様)</h3>
  * 
  * 引き続き基本的な使い方を見てみましょう。以下がシンプルな更新の例です。 conn.prepareStatement() の結果を
  * RsvrJdbc.wrap() で受けることにより、PreparedStatement に相当する `RsvrPreparedStatement`
@@ -127,7 +127,7 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * でも待ってください。parameterIndex の指定が省略されるとして、この値はいつリセットされるのでしょうか。次に
  * RsvrPreparedStatement 内部の parameterIndex のリセットタイミングを見てみましょう。
  * 
- * <h2>RsvrPreparedStatement 内部の parameterIndex のリセットタイミング</h2>
+ * <h3>RsvrPreparedStatement 内部の parameterIndex のリセットタイミング</h3>
  * 
  * 以下のメソッド呼び出しのタイミングで RsvrPreparedStatement 内部の parameterIndex のリセットはおこなわれます。
  * 
@@ -146,7 +146,7 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * また、RsvrPreparedStatement#resetParameterIndex メソッドを明示的に呼び出すことによっても
  * parameterIndex のリセットを行うことが可能です。
  * 
- * <h2>null との格闘</h2>
+ * <h3>null との格闘</h3>
  * 
  * JDBCプログラミングにおける `ちいさないらいら` のひとつに null との格闘があります。ご承知のように JDBC API
  * ではいくつかのデータ型においてプリミティブ型が使用されます。Javaではプリミティブ型は null を扱うことができないために、JDBC API
@@ -175,7 +175,7 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * このように `RsvrJdbc` では、この null にまつわる面倒ごとを省略できてしまうのです。どうでしょう、`ちいさないらいら`
  * のひとつが解決できましたか？
  * 
- * <h2>java.sql.Date、java.sql.Timestamp との格闘</h2>
+ * <h3>java.sql.Date、java.sql.Timestamp との格闘</h3>
  * 
  * JDBCプログラミングにおける `ちいさないらいら` のひとつに 日付型、日時型 との格闘があります。 ご承知のように JDBC API では
  * `java.sql.Date` や `java.sql.Timestamp` という JDBC用のデータ型を持っています。一方で 一般的な Java
@@ -196,7 +196,7 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * `RsvrJdbc` では、この java.sql.Date、 java.sql.Timestamp
  * にまつわる面倒ごとを省略できてしまうのです。どうでしょう、`ちいさないらいら` のひとつが解決できましたか？
  * 
- * <h1>JPA や ORM で 既にうまくいっている人には不要</h1>
+ * <h2>JPA や ORM で 既にうまくいっている人には不要</h2>
  * 
  * JPA や Hibernate や MyBatis といった ORM をご利用されていて、それらでうまくいっている人には、`RsvrJdbc`
  * は不要なものです。 `RsvrJdbc` は、世の中のいろいろな Java データベースアクセス手法を試したがいろいろあって絶望し、JDBC API
@@ -206,14 +206,14 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * ORM 機能が `RsvrJdbc` 用に提供される可能性は否定できませんが、`RsvrJdbc` は ORM
  * 機能は搭載しませんし、また少なくとも現在はそういった外付け ORM 機能は提供されていません)
  * 
- * <h2>RsvrJdbc はライブラリとして軽量なだけではなく 実行時の速度も (相対的に) 高速</h2>
+ * <h3>RsvrJdbc はライブラリとして軽量なだけではなく 実行時の速度も (相対的に) 高速</h3>
  * 
  * `RsvrJdbc` は軽量なライブラリとして実装されており、見通しが良いばかりでなく、実行時の速度も (相対的に)
  * 高速、あるいはコーディングの工夫により速度改善の工夫を実施しやすいライブラリです。これは `RsvrJdbc` が生 JDBC API
  * プログラミングとほぼほぼ等価かつ透過であるために手に入るメリットです。`SQL` を自分で記述する前提になっていることも
  * 性能のチューニングの実施という観点からは有利であるとも考えることは可能でしょう。
  * 
- * <h1>RsvrJdbc の導入方法</h1>
+ * <h2>RsvrJdbc の導入方法</h2>
  * 
  * `RsvrJdbc` の導入方法にはいくつかの方法があります。
  * 
@@ -230,13 +230,13 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * の記述がソースコードから無くなり、代わりに `RsvrPreparedStatement`
  * のインポートが記述されていることが確認でき、そしてコンパイルやビルドが成功していれば導入は成功していると考えられます。
  * 
- * <h1>RsvrJdbc の制限</h1>
+ * <h2>RsvrJdbc の制限</h2>
  * 
- * <h2>スレッドセーフではありません。</h2>
+ * <h3>スレッドセーフではありません。</h3>
  * 
  * `RsvrJdbc` はスレッドセーフではありません。
  * 
- * <h2>columnLabel を使用するメソッドは 基本的にサポート外</h2>
+ * <h3>columnLabel を使用するメソッドは 基本的にサポート外</h3>
  * 
  * RsvrResultSet の columnLabel (項目名による値アクセス) をもちいた API 呼び出しについて `RsvrJdbc`
  * はで極力関与することなく 元のResultSet の columnLabel
@@ -244,18 +244,18 @@ try (RsvrPreparedStatement stmtMod = RsvrJdbc.wrap(conn.prepareStatement("UPDATE
  * で提供される追加の機能がありませんので、基本的に columnLabel 側のメソッドは使用せずに columnIndex
  * を使用する側のメソッドの仕様を推奨します。
  * 
- * <h1>RsvrJdbc でわからないことがあったら</h1>
+ * <h2>RsvrJdbc でわからないことがあったら</h2>
  * 
  * `RsvrJdbc` で不明点があった時にもっとも簡単な解決方法の一つは、`RsvrJdbc` のソースコードを参照することです。`RsvrJdbc`
  * は軽量ライブラリであり、ソースコードの参照は比較的簡単に実現できることでしょう。`RsvrJdbc` のソースコードに現れるソースコードの多くは、JDBC
  * API を直接使用している際に登場するソースコード記述でよく見かけるものであるため読解の助けになることでしょう。
  * 
- * <h2>ソースコードを読むことを推奨</h2>
+ * <h3>ソースコードを読むことを推奨</h3>
  * 
  * 当面は `RsvrJdbc` に関するインターネット上などの情報は少なめでしょうから、基本的に `RsvrJdbc`
  * のソースコードを読みつつ使用することを推奨します。平易な構造になっているので、それほど苦労せずに読解できることと期待します。
  * 
- * <h1>感想 / 背景</h1>
+ * <h2>感想 / 背景</h2>
  * 
  * 私は Java を用いたソフトウェア開発についての比較的長い経験を持っています。その中で、JDBC API
  * を直接使用した開発、世の中のデータベースアクセス支援ツールの使用、データベースアクセス支援ツールそのものの開発とさまざまな経験をしてきましたが、どれも一長一短で

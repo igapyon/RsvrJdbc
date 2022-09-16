@@ -4,6 +4,8 @@
 .classpath
 .project
 .settings
+pom.xml.releaseBackup
+release.properties
 FUNCTIONS.docx
 README.docx
 pandoc-template-20220901a.docx
