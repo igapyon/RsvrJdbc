@@ -3,15 +3,66 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>consulting.reservoir.jdbc</groupId>
 	<artifactId>RsvrJdbc</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.20220916a-SNAPSHOT</version>
 	<name>RsvrJdbc</name>
-	<description>Reservoir JDBC.</description>
+	<description>RsvrJdbc is a lightweight library designed to eliminate minor annoyances in JDBC programming. 
+	RsvrJdbc is designed so that experienced JDBC programmers can start using RsvrJdbc immediately by knowing the small changes in RsvrJdbc, 
+	and so that they can eliminate minor annoyances.</description>
+	<url>https://github.com/igapyon/RsvrJdbc</url>
+
+	<!-- see: https://maven.apache.org/guides/mini/guide-central-repository-upload.html -->
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/igapyon/RsvrJdbc</url>
+		<connection>scm:git:https://github.com/igapyon/RsvrJdbc.git</connection>
+		<developerConnection>scm:git:https://github.com/igapyon/RsvrJdbc.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>igapyon</id>
+			<name>Toshiki Iga</name>
+			<email>igapyon@gmail.com</email>
+			<url>https://www.igapyon.jp/</url>
+			<roles>
+				<role>lead</role>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>Asia/Tokyo</timezone>
+			<properties>
+				<picUrl>https://www.igapyon.jp/igapyon/diary/images/iga200306.jpg</picUrl>
+			</properties>
+		</developer>
+	</developers>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/
+			</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 	</properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
@@ -30,22 +81,72 @@
 		</dependency>
 	</dependencies>
 
-	<!-- ref: https://maven.apache.org/pom.html#Developers -->
-	<developers>
-		<developer>
-			<id>igapyon</id>
-			<name>Toshiki Iga</name>
-			<email>igapyon@gmail.com</email>
-			<url>https://www.igapyon.jp/</url>
-			<roles>
-				<role>lead</role>
-				<role>architect</role>
-				<role>developer</role>
-			</roles>
-			<timezone>-9</timezone>
-			<properties>
-				<picUrl>https://www.igapyon.jp/igapyon/diary/images/iga200306.jpg</picUrl>
-			</properties>
-		</developer>
-	</developers>
-</project> 
+	<build>
+		<plugins>
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<argLine>-Duser.language=en -Duser.region=US</argLine>
+					<systemPropertyVariables>
+						<user.language>en</user.language>
+						<user.region>US</user.region>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+
+			<!-- create sources.jar -->
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+			</plugin>
+
+			<!-- javadoc -->
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.4.1</version>
+				<configuration>
+					<additionalJOptions>
+						<additionalJOption>-J-Duser.language=en</additionalJOption>
+						<additionalJOption>-J-Duser.region=US</additionalJOption>
+					</additionalJOptions>
+					<locale>en</locale>
+					<source>11</source>
+					<show>protected</show>
+					<encoding>UTF-8</encoding>
+					<charset>UTF-8</charset>
+					<docencoding>UTF-8</docencoding>
+				</configuration>
+			</plugin>
+
+			<!-- gpg -->
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-gpg-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
