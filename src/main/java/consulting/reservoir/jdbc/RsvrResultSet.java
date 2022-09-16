@@ -35,13 +35,13 @@ import java.util.Calendar;
 /**
  * RsvrJdbc が提供する ResultSet です。
  * 
- * <h1>About RsvrJdbc</h1>
+ * <h2>About RsvrJdbc</h2>
  *
  * `RsvrJdbc` は、JDBCプログラミングにおける `ちいさないらいら` を解消することを目的に作成した軽量ライブラリです。
  * JDBCプログラミング体験そのままが活用できることを原則に `RsvrJdbc` における小さな変更点を知るだけで
  * JDBCプログラミング経験者はすぐに利用開始でき、そして `ちいさないらいら` を解消できることを目指して `RsvrJdbc` は作られています。
  * 
- * <h2>Usage: 検索</h2>
+ * <h3>Usage: 検索</h3>
  * 
  * まずは基本的な使い方から見てみましょう。 まずは検索の方法から見ていきます。以下がシンプルな検索の例です。 このソースコード断片では
  * `conn.prepareStatement()` の結果を `RsvrJdbc#wrap`
@@ -74,7 +74,7 @@ try (RsvrPreparedStatement stmt = RsvrJdbc.wrap(conn.prepareStatement(
  * でも待ってください。columnIndex の指定が省略されるとして、この値はいつリセットされるのでしょうか。大丈夫です。次の説明で
  * RsvrResultSet 内部の columnIndex のリセットタイミングを知ることができます。
  * 
- * <h2>RsvrResultSet 内部の columnIndex のリセットタイミング</h2>
+ * <h3>RsvrResultSet 内部の columnIndex のリセットタイミング</h3>
  * 
  * `RsvrJdbc` では、以下のメソッド呼び出しのタイミングで RsvrResultSet 内部の columnIndex のリセットを実施します。
  * 
